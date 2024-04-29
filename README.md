@@ -1,6 +1,8 @@
 # XY_EqProp
 ## Paper:
   - Code used for paper: https://arxiv.org/abs/2402.08579
+  - The background and the algorithm is described in https://www.frontiersin.org/articles/10.3389/fncom.2017.00024/full
+  - This project run EqProp on XY model
   - This part of code is un-encapsulated, function-oriented. JAX is used for acceleartion on GPU.
   Classes of networks are used to generate initial parameters and initial states of specific topology. 
   - Functions of:
