@@ -12,6 +12,6 @@
     - lattice_func: functions used for lattice
    
 ## MNIST_study_spoch:
-  -  Encapsulated and reconstructed code.
+  -  Encapsulated and reconstructed code. Easier to read, understand and extend. 
   -  Run with full size MNIST
   -  Run "python -u main.py". One may need to change the parameters and directory in main.py. 
