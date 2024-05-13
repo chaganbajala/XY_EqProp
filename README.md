@@ -10,3 +10,8 @@
     - _func: functions for network with all-to-all activity.
     - layer_func/layered_func: functions for networks with layer architecture.
     - lattice_func: functions used for lattice
+   
+## MNIST_study_spoch:
+  -  Encapsulated and reconstructed code.
+  -  Run with full size MNIST
+  -  Run "python -u main.py". One may need to change the parameters and directory in main.py. 
