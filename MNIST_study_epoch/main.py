@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-'''
-import os
-os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
-XLA_PYTHON_CLIENT_MEM_FRACTION=.499
-'''
 
 import numpy as np
 import scipy as sp
@@ -24,21 +17,13 @@ import jaxopt
 import time
 import pickle
 
-
-# In[6]:
-
-
 import model as model
 import method as method
 import task
 
 import gc
-#gc.collect()
 
-
-# In[56]:
 !python -u set_mnist_data.py
-
 
 class mnist_epoch_task(task.moment_gradient_descent):
     
@@ -145,8 +130,6 @@ class mnist_epoch_task(task.moment_gradient_descent):
         return y, inference_res, performance
 
 
-# In[57]:
-
 
 class layer_network_for_mnist(model.layered_general_XY_network):
     
@@ -228,8 +211,6 @@ class general_network_for_mnist(model.general_XY_network):
         return g_W, g_bias
 
 
-# In[58]:
-
 
 #Load data from sorted MNIST
 import pickle
@@ -250,16 +231,12 @@ sorted_test_data = load_data(directory + "sorted_test_data")
 sorted_test_target = load_data(directory + "sorted_test_target")
 
 
-# In[59]:
 
 
 train_data = np.concatenate(sorted_train_data)
 train_target = np.concatenate(sorted_train_target)
 test_data = np.concatenate(sorted_test_data)
 test_target = np.concatenate(sorted_test_target)
-
-
-# In[60]:
 
 
 #Define network
@@ -280,16 +257,11 @@ XY_structure = N, input_index, output_index
 mnist_gxynn = general_network_for_mnist(XY_structure, coup_func, bias_func, cost_func, structure_mask=mnist_lxynn.mask)
 
 
-# In[61]:
-
-
 # Initial network parameters
 WL, bias = mnist_lxynn.get_initial_params()
 layer_network_params_0 = WL, bias
 network_params_0 = mnist_lxynn.merge_params(WL, bias)
 
-
-# In[78]:
 
 
 # Define gradient calculation with Equilibrium Propagation
@@ -314,9 +286,6 @@ vmap_task = method.EP_grad_vmap(grad_params, sample_args)
 
 
 epoch_proj = mnist_epoch_task(vmap_task, mnist_lxynn, layer_network_params_0)
-
-
-# In[82]:
 
 
 suffix = 'h0_test'
