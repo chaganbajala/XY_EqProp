@@ -242,7 +242,7 @@ def load_data(data_nf):
         data = pickle.load(f)
     return data
 
-directory = "/zeropoint/u/qinwang/notebooks/MNIST_study_epoch/"
+directory = "MNIST_study_epoch/"
 
 sorted_train_data = load_data(directory + "sorted_train_data")
 sorted_train_target = load_data(directory + "sorted_train_target")
